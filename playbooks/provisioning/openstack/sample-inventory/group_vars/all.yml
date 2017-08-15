@@ -7,6 +7,7 @@ openstack_ssh_public_key: "openshift"
 openstack_default_image_name: "centos7"
 openstack_default_flavor: "m1.medium"
 openstack_external_network_name: "public"
+#openstack_private_network_name:  "openshift-ansible-{{ stack_name }}-net"
 
 openstack_num_masters: 1
 openstack_num_infra: 1
@@ -78,3 +79,8 @@ ansible_user: openshift
 #openstack_private_ssh_key: ~/.ssh/openshift
 # # The path for the SSH config to access all nodes
 #openstack_ssh_config_path: /tmp/ssh.config.openshift.ansible.{{ env_id }}.{{ public_dns_domain }}
+
+
+# If you want to use the VM storage instead of Cinder volumes, set this to `true`.
+# NOTE: this is for testing only! Your data will be gone once the VM disappears!
+# ephemeral_volumes: false

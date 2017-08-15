@@ -10,6 +10,7 @@ etc.). The result is an environment ready for openshift-ansible.
 * [Ansible-galaxy](https://pypi.python.org/pypi/ansible-galaxy-local-deps)
 * [jinja2](http://jinja.pocoo.org/docs/2.9/)
 * [shade](https://pypi.python.org/pypi/shade)
+* python-jmespath / [jmespath](https://pypi.python.org/pypi/jmespath)
 * python-dns / [dnspython](https://pypi.python.org/pypi/dnspython)
 * Become (sudo) is not required.
 
@@ -62,10 +63,6 @@ Otherwise, even if there are differences between the two versions, installation 
 
     cp -r openshift-ansible-contrib/playbooks/provisioning/openstack/sample-inventory inventory
 
-### Copy clouds.yaml
-
-    cp openshift-ansible-contrib/playbooks/provisioning/openstack/sample-inventory/clouds.yaml clouds.yaml
-
 ### Copy ansible config
 
     cp openshift-ansible-contrib/playbooks/provisioning/openstack/sample-inventory/ansible.cfg ansible.cfg
@@ -112,6 +109,10 @@ You can see your flavors with `openstack flavor list`.
 providing external connectivity. It is often called `public`,
 `external` or `ext-net`. You can see your networks with `openstack
 network list`.
+
+`openstack_private_network_name` is the name of the private Neutron network
+providing admin/control access for ansible. It can be merged with other
+cluster networks, there are no special requirements for networking.
 
 The `openstack_num_masters`, `openstack_num_infra` and
 `openstack_num_nodes` values specify the number of Master, Infra and
